@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mainFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Главная" />
+    <item
+        android:id="@+id/calendarFragment"
+        android:icon="@drawable/ic_calendar"
+        android:title="Календарь" />
+    <item
+        android:id="@+id/instagramFragment"
+        android:icon="@drawable/ic_instagram"
+        android:title="Instagram" />
+    <item
+        android:id="@+id/musicFragment"
+        android:icon="@drawable/ic_music"
+        android:title="Музыка" />
+</menu> 
