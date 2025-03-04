@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        // Определяем верхний уровень навигации (все фрагменты на одном уровне)
         val topLevelDestinations = setOf(
             R.id.mainFragment,
             R.id.musicFragment,
@@ -35,15 +34,10 @@ class MainActivity : AppCompatActivity() {
         )
 
         appBarConfiguration = AppBarConfiguration(topLevelDestinations)
-
-        // Настраиваем ActionBar
         setupActionBarWithNavController(navController, appBarConfiguration)
-
-        // Настраиваем нижнюю навигацию
         binding.bottomNavigation.apply {
             setupWithNavController(navController)
             setOnItemSelectedListener { item ->
-                // Обрабатываем выбор пункта меню
                 when (item.itemId) {
                     R.id.mainFragment,
                     R.id.musicFragment,

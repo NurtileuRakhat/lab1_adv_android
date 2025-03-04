@@ -79,7 +79,6 @@ class CalendarFragment : Fragment() {
     private fun loadCalendarEvents() {
         showLoading(true)
         
-        // Используем корутину для загрузки событий в фоновом потоке
         viewLifecycleOwner.lifecycleScope.launch {
             try {
                 val events = withContext(Dispatchers.IO) {
@@ -87,11 +86,9 @@ class CalendarFragment : Fragment() {
                 }
 
                 if (events.isEmpty()) {
-                    // Если событий нет, добавляем тестовые данные
                     withContext(Dispatchers.IO) {
                         addTestEvents()
                     }
-                    // Загружаем события снова
                     val updatedEvents = withContext(Dispatchers.IO) {
                         fetchCalendarEvents()
                     }
@@ -111,7 +108,7 @@ class CalendarFragment : Fragment() {
     private fun fetchCalendarEvents(): List<CalendarEvent> {
         val events = mutableListOf<CalendarEvent>()
         val currentTime = System.currentTimeMillis()
-        val endTime = currentTime + (7 * 24 * 60 * 60 * 1000) // неделя вперед
+        val endTime = currentTime + (7 * 24 * 60 * 60 * 1000) 
 
         val projection = arrayOf(
             CalendarContract.Events._ID,

@@ -16,7 +16,6 @@ class AirplaneModeReceiver : BroadcastReceiver() {
                 Settings.Global.AIRPLANE_MODE_ON, 0
             ) != 0
 
-            // Показываем Toast сообщение
             val message = if (isAirplaneModeOn) {
                 "Режим полета включен"
             } else {
@@ -24,7 +23,6 @@ class AirplaneModeReceiver : BroadcastReceiver() {
             }
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 
-            // Уведомляем слушателя об изменении состояния
             listener?.onAirplaneModeChanged(isAirplaneModeOn)
         }
     }
@@ -57,11 +55,9 @@ class AirplaneModeReceiver : BroadcastReceiver() {
                     if (enable) 1 else 0
                 )
 
-                // Отправляем broadcast для обновления состояния
                 val intent = Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED)
                 context.sendBroadcast(intent)
             } catch (e: SecurityException) {
-                // Если нет прав на прямое изменение, открываем настройки
                 val intent = Intent(Settings.ACTION_AIRPLANE_MODE_SETTINGS)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 context.startActivity(intent)
